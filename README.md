@@ -1,0 +1,2 @@
+# NeuroskyUnity
+Developing BCI (Brain-Computer Interface) games in Unity using the NeuroSky headset. During research, it was observed that many available plugins rely on older versions of Unity. The repository [tgraupmann/unity_neurosky](https://github.com/tgraupmann/unity_neurosky.git) was identified as a useful starting point, as it connects to NeuroSky using the ThinkGear Connector (TGC). The code structure from that repository was adapted to work with Unity version 6000.0.29f1.
