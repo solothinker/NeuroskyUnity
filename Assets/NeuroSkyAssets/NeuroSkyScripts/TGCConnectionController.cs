@@ -54,7 +54,7 @@ namespace MindWave
             client = new TcpClient("127.0.0.1", 13854);
             stream = client.GetStream();
             buffer = new byte[1024];
-            byte[] myWriteBuffer = Encoding.ASCII.GetBytes(@"{""enableRawOutput"": true, ""format"": ""Json""}");
+            byte[] myWriteBuffer = Encoding.ASCII.GetBytes(@"{""enableRawOutput"": false, ""format"": ""Json""}");
             stream.Write(myWriteBuffer, 0, myWriteBuffer.Length);
 
             while (m_waitForExit)
@@ -83,7 +83,7 @@ namespace MindWave
         {
             public int attention = 0;
             public int meditation = 0;
-            public PowerData eegPower = null;
+            //public PowerData eegPower = null;
             public SenseData()
             {
             }
@@ -96,6 +96,7 @@ namespace MindWave
             public int rawEeg = 0;
             public int blinkStrength = 0;
             public SenseData eSense = null;
+            public PowerData eegPower = null;
             public PackatData()
             {
             }
@@ -180,44 +181,42 @@ namespace MindWave
                                 {
                                     UpdateMeditationEvent(data.eSense.meditation);
                                 }
+                            }
 
-                                if (null != data.eSense.eegPower)
+                            if (null != data.eegPower)
+                            {
+                                if (UpdateDeltaEvent != null)
                                 {
-                                    if (UpdateDeltaEvent != null)
-                                    {
-                                        UpdateDeltaEvent(data.eSense.eegPower.delta);
-                                    }
-                                    if (UpdateThetaEvent != null)
-                                    {
-                                        UpdateThetaEvent(data.eSense.eegPower.theta);
-                                    }
-                                    if (UpdateLowAlphaEvent != null)
-                                    {
-                                        UpdateLowAlphaEvent(data.eSense.eegPower.lowAlpha);
-                                    }
-                                    if (UpdateHighAlphaEvent != null)
-                                    {
-                                        UpdateHighAlphaEvent(data.eSense.eegPower.highAlpha);
-                                    }
-                                    if (UpdateLowBetaEvent != null)
-                                    {
-                                        UpdateLowBetaEvent(data.eSense.eegPower.lowBeta);
-                                    }
-                                    if (UpdateHighBetaEvent != null)
-                                    {
-                                        UpdateHighBetaEvent(data.eSense.eegPower.highBeta);
-                                    }
-                                    if (UpdateLowGammaEvent != null)
-                                    {
-                                        UpdateLowGammaEvent(data.eSense.eegPower.lowGamma);
-                                    }
-                                    if (UpdateHighGammaEvent != null)
-                                    {
-                                        UpdateHighGammaEvent(data.eSense.eegPower.highGamma);
-                                    }
+                                    UpdateDeltaEvent(data.eegPower.delta);
                                 }
-
-
+                                if (UpdateThetaEvent != null)
+                                {
+                                    UpdateThetaEvent(data.eegPower.theta);
+                                }
+                                if (UpdateLowAlphaEvent != null)
+                                {
+                                    UpdateLowAlphaEvent(data.eegPower.lowAlpha);
+                                }
+                                if (UpdateHighAlphaEvent != null)
+                                {
+                                    UpdateHighAlphaEvent(data.eegPower.highAlpha);
+                                }
+                                if (UpdateLowBetaEvent != null)
+                                {
+                                    UpdateLowBetaEvent(data.eegPower.lowBeta);
+                                }
+                                if (UpdateHighBetaEvent != null)
+                                {
+                                    UpdateHighBetaEvent(data.eegPower.highBeta);
+                                }
+                                if (UpdateLowGammaEvent != null)
+                                {
+                                    UpdateLowGammaEvent(data.eegPower.lowGamma);
+                                }
+                                if (UpdateHighGammaEvent != null)
+                                {
+                                    UpdateHighGammaEvent(data.eegPower.highGamma);
+                                }
                             }
                         }
                         else if (data.rawEeg != 0)
