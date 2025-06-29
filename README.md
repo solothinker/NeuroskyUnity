@@ -3,3 +3,5 @@ Developing BCI (Brain-Computer Interface) games in Unity using the NeuroSky head
 
 Updated the **TGCConnectionController** code for following Packet-
 - {"eSense":{"attention":13,"meditation":100},"eegPower":{"delta":271241,"theta":31509,"lowAlpha":22531,"highAlpha":3945,"lowBeta":12849,"highBeta":4603,"lowGamma":2144,"highGamma":871},"poorSignalLevel":0}
+- Updated the Game UI to show the different brain wave strength.
+![GameUI](https://github.com/solothinker/NeuroskyUnity/blob/main/GameImg/GUI.png)
