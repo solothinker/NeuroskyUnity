@@ -137,7 +137,7 @@ namespace MindWave
                     String packet = Encoding.ASCII.GetString(buffer, 0, bytesRead);
                     if (!string.IsNullOrEmpty(packet))
                     {
-                        Debug.Log(packet);
+                        //Debug.Log(packet);
                         if (packet.Contains("}"))
                         {
                             int count = GetObjectCount(packet);
@@ -163,9 +163,9 @@ namespace MindWave
                         {
                             continue;
                         }
-                        if (data.poorSignalLevel != 0)
+                        else //(data.poorSignalLevel != 0)
                         {
-                            Debug.Log("data.poorSignalLevel: " + data.poorSignalLevel);
+                            //Debug.Log("data.poorSignalLevel: " + data.poorSignalLevel);
                             if (null != UpdatePoorSignalEvent)
                             {
                                 UpdatePoorSignalEvent.Invoke(data.poorSignalLevel);
@@ -219,13 +219,15 @@ namespace MindWave
                                 }
                             }
                         }
-                        else if (data.rawEeg != 0)
+                        // Collecting the raw data
+                        if (data.rawEeg != 0)
                         {
                             if (null != UpdateRawdataEvent)
                             {
                                 UpdateRawdataEvent(data.rawEeg);
                             }
                         }
+                        // Collecting the blink strength
                         else if (data.blinkStrength != 0)
                         {
                             if (null != UpdateRawdataEvent)
