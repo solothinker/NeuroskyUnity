@@ -12,8 +12,8 @@ namespace MindWave
         public TGCConnectionController controller;
         
 
-        private int meditationValue = -1;
-        private int attentionValue = -1;
+        [HideInInspector] public int meditationValue = -1;
+        [HideInInspector] public int attentionValue = -1;
 
         private float deltaValue = -1;
         private float thetaValue = -1;
