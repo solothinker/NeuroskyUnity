@@ -7,10 +7,9 @@ public class Target : MonoBehaviour
     public float amplitude = 0.5f;       // Amplitude of the oscillation
 
     private Vector3 moveDirection;       // Random direction for straight movement
-    private Vector3 oscillationAxis;     // Perpendicular axis to oscillate on
-    private Vector3 startPosition;
-    private float time;
     public float value = 10.0f;
+    public bool ChangePosition = false;
+
 
     void Start()
     {
@@ -40,11 +39,16 @@ public class Target : MonoBehaviour
         // Final position
         //transform.position = startPosition + baseMove + oscillation;
         //transform.position =  oscillation;
-        if (Vector3.Distance(transform.position, moveDirection) < 0.1f) 
+        if (Vector3.Distance(transform.position, moveDirection) < 0.1f || ChangePosition) 
         {
             moveDirection = new Vector3(Random.Range(-value, value), Random.Range(-value, value), Random.Range(-value, value));
         }
         transform.position = Vector3.MoveTowards(transform.position, moveDirection, speed * Time.deltaTime);
+        //transform.position = oscillation;
 
+    }
+    private void OnTriggerEnter()
+    {
+        Destroy(gameObject);
     }
 }
