@@ -9,7 +9,7 @@ public class GameObjectInstantiate : MonoBehaviour
     public GameObject target;
     private GameObject _missile = null,_target = null;
     private int value = 4;
-    private Rigidbody rb;
+    private Rigidbody rbm,rbt;
     public GameObject CameraMan;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +24,7 @@ public class GameObjectInstantiate : MonoBehaviour
     {       
         if (_target == null) SpwanMyGameObject(target);
         if (_missile == null) SpwanMyGameObject(missile);
-        Debug.Log(rb.linearVelocity.magnitude);
+        //Debug.Log(rbm.linearVelocity.magnitude);
     }
 
     private void SpwanMyGameObject(GameObject MyGO)
@@ -33,13 +33,14 @@ public class GameObjectInstantiate : MonoBehaviour
         {
             var pos = new Vector3(UnityEngine.Random.Range(-value*10, value*10), 0, UnityEngine.Random.Range(-value, value));
             _target = Instantiate(MyGO, pos, Quaternion.identity);
+            rbt = _target.GetComponent<Rigidbody>();
         }
         else
         {
             var pos = new Vector3(UnityEngine.Random.Range(-value * 10, value * 10), 0, UnityEngine.Random.Range(-value, value));
             Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
             _missile = Instantiate(MyGO, pos, rot);
-            rb = _missile.GetComponent<Rigidbody>();
+            rbm = _missile.GetComponent<Rigidbody>();
         }
     }
 }

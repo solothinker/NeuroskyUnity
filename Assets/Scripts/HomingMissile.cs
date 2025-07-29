@@ -13,7 +13,7 @@ public class HomingMissile : MonoBehaviour
     private NeuroskyGUIManager neuroskyGUIManager;
     private GameManager gameManager;
     public GameObject explosion;
-    private int ReqMeditationValue = 0;
+    private Collider Collider;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,26 +21,13 @@ public class HomingMissile : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
         gameManager = FindAnyObjectByType<GameManager>();
+        Collider = GetComponent<Collider>();
         //FindAnyObjectByType<AudioManager>().Play("BurningRocket");
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        if (gameManager.reqFocus == 30.0f) { ReqMeditationValue = 60; }
-        else if (gameManager.reqFocus == 35.0f) { ReqMeditationValue = 70; }
-        else if (gameManager.reqFocus == 40.0f) { ReqMeditationValue = 80; }
-        else if (gameManager.reqFocus == 45.0f) { ReqMeditationValue = 90; }
-
-        if (ReqMeditationValue < neuroskyGUIManager.meditationValue && Vector3.Distance(target.position,transform.position) < 3.5f)
-        {
-            target.GetComponent<Target>().ChangePosition = true;
-        }
-        else
-        {
-            target.GetComponent<Target>().ChangePosition = false;
-        }
-        
+    { 
         Vector3 direction = (target.position - transform.position).normalized;
         Vector3 euler = Quaternion.LookRotation(direction).eulerAngles;
         
@@ -49,7 +36,17 @@ public class HomingMissile : MonoBehaviour
         Quaternion newRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotateSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(newRotation);
         rb.linearVelocity = transform.forward * speed * (float)neuroskyGUIManager.meditationValue / gameManager.reqFocus;
+        // Disabling the collider value if it is lower then the required focuse value
+        if ((float)neuroskyGUIManager.meditationValue / gameManager.reqFocus >= 1f)
+        {
+            Collider.enabled = true;
+        }
+        else
+        {
+            Collider.enabled = false;
+        }
 
+        
     }
 
     private void OnTriggerEnter()

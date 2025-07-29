@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [HideInInspector] public float reqFocus = 30.0f;
+    [HideInInspector] public float reqFocus;
     public Canvas canvas;
     private int count = 0;
     public new GameObject gameObject;
@@ -28,28 +28,28 @@ public class GameManager : MonoBehaviour
     }
     public void EasyLevel()
     {
-        reqFocus = 30.0f;
+        reqFocus = 60.0f;
         count += 1;
         canvas.gameObject.SetActive(false);
         gameObject.SetActive(true);
     }
     public void MediumLevel()
     {
-        reqFocus = 35.0f;
+        reqFocus = 70.0f;
         count += 1;
         canvas.gameObject.SetActive(false);
         gameObject.SetActive(true);
     }
     public void HardLevel()
     {
-        reqFocus = 40.0f;
+        reqFocus = 80.0f;
         count += 1;
         canvas.gameObject.SetActive(false);
         gameObject.SetActive(true);
     }
     public void ExpertLevel()
     {
-        reqFocus = 45.0f;
+        reqFocus = 90.0f;
         count += 1;
         canvas.gameObject.SetActive(false);
         gameObject.SetActive(true);
