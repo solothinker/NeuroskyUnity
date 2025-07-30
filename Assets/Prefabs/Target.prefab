@@ -125,6 +125,8 @@ MonoBehaviour:
   speed: 5
   frequency: 2
   amplitude: 10
+  value: 10
+  distance: 50
 --- !u!54 &3819985143503571154
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -22,7 +22,6 @@ public class HomingMissile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         gameManager = FindAnyObjectByType<GameManager>();
         Collider = GetComponent<Collider>();
-        //FindAnyObjectByType<AudioManager>().Play("BurningRocket");
     }
 
     // Update is called once per frame
@@ -53,15 +52,9 @@ public class HomingMissile : MonoBehaviour
     {
 
         GameObject explosionInstance = Instantiate(explosion,transform.position,transform.rotation);
-        //FindAnyObjectByType<AudioManager>().StopPlaying("BurningRocket");
         FindAnyObjectByType<AudioManager>().Play("BombExplosion");
 
         Destroy(gameObject);
         Destroy(explosionInstance, 1f);
-        //StartCoroutine(DestroyAfterDelay(explosionInstance, 1f));
-    }
-    private void OnDisable()
-    {
-        //FindAnyObjectByType<AudioManager>().StopPlaying("BurningRocket");
     }
 }
