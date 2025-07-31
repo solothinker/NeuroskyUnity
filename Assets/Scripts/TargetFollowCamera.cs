@@ -7,7 +7,6 @@ public class TargetFollowCamera : MonoBehaviour
     private CinemachineCamera CineCam;
     private Transform target;
     private Transform missile;
-    private bool onlyOnce = true;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,17 +18,10 @@ public class TargetFollowCamera : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         missile = GameObject.FindGameObjectWithTag("Missile").transform;
-        if (target != null && onlyOnce)
+        if(target != null && missile != null)
         {
             CineCam.LookAt = target;
             CineCam.Follow = missile;
-
-            onlyOnce = false;
         }
-        else
-        {
-            onlyOnce = true;
-        }
-
     }
 }

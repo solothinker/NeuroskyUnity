@@ -36,14 +36,14 @@ public class HomingMissile : MonoBehaviour
         rb.MoveRotation(newRotation);
         rb.linearVelocity = transform.forward * speed * (float)neuroskyGUIManager.meditationValue / gameManager.reqFocus;
         // Disabling the collider value if it is lower then the required focuse value
-        if ((float)neuroskyGUIManager.meditationValue / gameManager.reqFocus >= 1f)
-        {
-            Collider.enabled = true;
-        }
-        else
-        {
-            Collider.enabled = false;
-        }
+        //if (neuroskyGUIManager.meditationValue >= gameManager.reqFocus)
+        //{
+        //    Collider.enabled = true;
+        //}
+        //else
+        //{
+        //    Collider.enabled = false;
+        //}
 
         
     }

@@ -15,16 +15,18 @@ public class GameObjectInstantiate : MonoBehaviour
     void Start()
     {
         SpwanMyGameObject(target);
-        SpwanMyGameObject(missile);
+        StartCoroutine(DelaySpwan());
 
     }
 
     // Update is called once per frame
     void Update()
-    {       
-        if (_target == null) SpwanMyGameObject(target);
-        if (_missile == null) SpwanMyGameObject(missile);
-        //Debug.Log(rbm.linearVelocity.magnitude);
+    {
+        if (_target == null && _missile == null)
+        {
+            SpwanMyGameObject(target);
+            StartCoroutine(DelaySpwan());
+        } 
     }
 
     private void SpwanMyGameObject(GameObject MyGO)
@@ -42,5 +44,13 @@ public class GameObjectInstantiate : MonoBehaviour
             _missile = Instantiate(MyGO, pos, rot);
             rbm = _missile.GetComponent<Rigidbody>();
         }
+        
+    }
+
+    IEnumerator DelaySpwan()
+    {
+        
+        yield return new WaitForSeconds(2f);
+        SpwanMyGameObject(missile);
     }
 }
