@@ -257,8 +257,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787836332130000134}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ButtonSelector, Assembly-CSharp
         m_MethodName: HardLevel
         m_Mode: 1
         m_Arguments:
@@ -526,8 +526,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787836332130000134}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ButtonSelector, Assembly-CSharp
         m_MethodName: MediumLevel
         m_Mode: 1
         m_Arguments:
@@ -659,8 +659,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787836332130000134}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ButtonSelector, Assembly-CSharp
         m_MethodName: ExpertLevel
         m_Mode: 1
         m_Arguments:
@@ -923,8 +923,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9eb7b733019894b8c7f368af62bdc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reqFocus: 30
-  canvas: {fileID: 7083884081871509261}
+  count: 0
 --- !u!1 &4994460258025487031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,8 +1418,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1787836332130000134}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ButtonSelector, Assembly-CSharp
         m_MethodName: EasyLevel
         m_Mode: 1
         m_Arguments:
