@@ -8,16 +8,11 @@ public class Target : MonoBehaviour
     private Vector3 direction;
     public float distance = 10f;
     private GameManager manager;
-    private NeuroskyGUIManager neuroskyGUIManager;
-    private ButtonSelector buttonSelector;
-    private float TimeCounter = 0f;
 
     void Start()
     {
         moveDirection = NewCoordinate();
         manager = FindFirstObjectByType<GameManager>();
-        neuroskyGUIManager = FindAnyObjectByType<NeuroskyGUIManager>();
-        buttonSelector = FindAnyObjectByType<ButtonSelector>();
     }
 
     void FixedUpdate()
@@ -30,24 +25,6 @@ public class Target : MonoBehaviour
         if (Vector3.Distance(transform.position, moveDirection) < 0.1f) 
         {
             moveDirection = NewCoordinate();
-        }
-
-        TimeCounter += Time.deltaTime;
-        // Managaing the Rocket speed
-        if (TimeCounter >= 1f)
-        {
-            if (neuroskyGUIManager.meditationValue >= buttonSelector.reqFocus)
-            {
-                speed -= 1;
-                //speed = Mathf.Max(speed, 4);
-            }
-            else
-            {
-                speed += 1;
-                //speed = Mathf.Min(speed, 10);
-            }
-            speed = Mathf.Clamp(speed, 4, 10);
-            TimeCounter = 0f;
         }
         transform.position = Vector3.MoveTowards(transform.position, moveDirection, speed *  Time.deltaTime);
     }

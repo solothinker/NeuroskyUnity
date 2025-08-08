@@ -40,13 +40,16 @@ public class GameObjectInstantiate : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        // Show Speed of Missile
         int speed = (int)(rbm.linearVelocity.magnitude * 100);
         UIText[0].text = "Speed = " + speed + " Km/hr";
 
+        // Show Distance between Target and Missile
         int dist = (int)Vector3.Distance(rbm.transform.position, rbt.transform.position);
         UIText[1].text = "Distance = " + dist + " m";
-
+        // Show Required Attention
         UIText[2].text = "Req Attention = " + buttonSelector.reqFocus;
+        // Show Current Attention
         UIText[3].text = "Cur Attention = " + neuroskyGUIManager.attentionValue;
     }
 
@@ -54,6 +57,7 @@ public class GameObjectInstantiate : MonoBehaviour
     {
         if (String.Compare(MyGO.name, "Target")==0)
         {
+            // Instantiate Target 
             var pos = new Vector3(UnityEngine.Random.Range(-value*10, value*10), 0, UnityEngine.Random.Range(-value, value));
             _target = Instantiate(MyGO, pos, Quaternion.identity);
             rbt = _target.GetComponent<Rigidbody>();
@@ -61,6 +65,7 @@ public class GameObjectInstantiate : MonoBehaviour
         }
         else
         {
+            // Instantiate Missile
             var pos = new Vector3(UnityEngine.Random.Range(-value * 10, value * 10), 0, UnityEngine.Random.Range(-value, value));
             Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
             _missile = Instantiate(MyGO, pos, rot);
@@ -71,7 +76,7 @@ public class GameObjectInstantiate : MonoBehaviour
 
     IEnumerator DelaySpwan()
     {
-        
+        // Delay time of Spwan
         yield return new WaitForSeconds(2f);
         SpwanMyGameObject(missile);
     }

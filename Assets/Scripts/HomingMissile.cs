@@ -45,12 +45,10 @@ public class HomingMissile : MonoBehaviour
             if (neuroskyGUIManager.meditationValue >= buttonSelector.reqFocus)
             {
                 speed += 1;
-                //speed = Mathf.Min(speed, 10);
             }
             else
             {
                 speed -= 1;
-                //speed = Mathf.Max(speed, 4);
             }
             speed = Mathf.Clamp(speed, 4, 10);
             TimeCounter = 0f;
@@ -63,18 +61,7 @@ public class HomingMissile : MonoBehaviour
         Quaternion targetRotation = Quaternion.Euler(euler);
         Quaternion newRotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotateSpeed * Time.fixedDeltaTime);
         rb.MoveRotation(newRotation);
-        rb.linearVelocity = transform.forward * speed;// * (float)neuroskyGUIManager.meditationValue / gameManager.reqFocus;
-        // Disabling the collider value if it is lower then the required focuse value
-        //if (neuroskyGUIManager.meditationValue >= gameManager.reqFocus)
-        //{
-        //    Collider.enabled = true;
-        //}
-        //else
-        //{
-        //    Collider.enabled = false;
-        //}
-
-        
+        rb.linearVelocity = transform.forward * speed;
     }
 
     private void OnTriggerEnter()
